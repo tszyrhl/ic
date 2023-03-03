@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Infinite Crossroads</title>
+    <meta name="description" content="...">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-aabb-collider-component@3.2.0/dist/aframe-aabb-collider-component.min.js"></script>
+    <script src="aframe-portals-master/dist/aframe-portals.js"></script>
+  </head>
+	  <body>
+		<a-scene background="color: skyblue">
+			
+			<a-assets>
+				<a-asset-item 
+				id="genericland"
+				src="gl.gltf"></a-asset-item>
+			</a-assets>
+			
+			<a-entity position="0 1.6 0" camera wasd-controls="acceleration: 45;" look-controls="pointerLockEnabled: false">
+				<a-cursor position="0 0 -.05" scale=".04 .04 1"></a-cursor>
+				<a-box scale="0 0 0"></a-box>
+			 </a-entity>
+
+			<a-entity id="portal1" portal="destination: #portal2; maxRecursion: 0" 
+					  scale="100 6 0" position="0 6.5 95" rotation="0 180 0"></a-entity>
+			<a-entity id="portal2" portal="destination: #portal1"
+					  scale="100 6 0" position="0 6.5 -95" rotation="0 0 0"></a-entity>
+			<a-entity id="portal1b" portal="destination: #portal2; maxRecursion: 0" 
+					  scale="100 6 0" position="0 6.5 100" rotation="0 180 0"></a-entity>
+			<a-entity id="portal2b" portal="destination: #portal1"
+					  scale="100 6 0" position="0 6.5 -100" rotation="0 0 0"></a-entity>
+
+			<a-entity id="portal3" portal="destination: #portal4; maxRecursion: 0" 
+					  scale="100 6 0" position="95 6.5 0" rotation="0 90 0"></a-entity>
+			<a-entity id="portal4" portal="destination: #portal3"
+					  scale="100 6 0" position="-95 6.5 0" rotation="0 -90 0"></a-entity>
+			<a-entity id="portal3b" portal="destination: #portal4; maxRecursion: 0" 
+					  scale="100 6 0" position="100 6.5 0" rotation="0 90 0"></a-entity>
+			<a-entity id="portal4b" portal="destination: #portal3"
+					  scale="100 6 0" position="-100 6.5 0" rotation="0 -90 0"></a-entity>
+			
+			<a-entity 
+			gltf-model="#genericland"
+			position="0 -38 0"
+			scale="0.5 0.5 0.5"></a-entity>
+			  
+		</a-scene>
+	  </body>
+</html>
